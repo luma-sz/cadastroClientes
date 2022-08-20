@@ -28,10 +28,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss", 
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              
             ],
-            "scripts": []
-          },
+            "scripts": [
+              "src/assets/javascript/cep.js",
+              "src/assets/javascript/form.js"
+            ] 
+          },            
           "configurations": {
             "production": {
               "budgets": [
@@ -98,7 +103,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           }
         }
       }
