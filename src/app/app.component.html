@@ -2,45 +2,38 @@
 <html>
 <head>
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
 <body>
-
     <section class="container">
     <button type="submit" class="btn btn-primary mb-3" id="botao-novo">NOVO</button>
-        <label for="filtrar-tabela">Filtre:</label>
-        <input type="text" name="filtro" id="filtrar-tabela" 
-        placeholder="Digite o nome do usuario">
             
     <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nome</th>
-                    <th>Endereço</th>
-                    <th>E-mail</th>
-                </tr>
-            </thead>
-            
-            <tbody id="tabela-consulta">
-                <tr class="cliente" id="primeiro-cliente">
-                    <td class="codigo">10102</td>
-                    <td class="nome">Paulo Rodrigues</td>
-                    <td class="endereco">Rua Bartolomeu de Gusmão, 1509, Vila Maracana </td>
-                    <td class="email">paulorodrigues@gmail.com</td>
-                </tr>
+        
+        <table  class="table table-bordered" id="tabela-consulta">
+            <tr>
+                <th *ngFor="let column of headers"> 
+                {{column}}
+                </th>
+            </tr>
 
-                <tr class="cliente">
-                    <td class="codigo">10102</td>
-                    <td class="nome">Paulo Rodrigues</td>
-                    <td class="endereco">Rua Bartolomeu de Gusmão, 1509, Vila Maracana </td>
-                    <td class="email">paulorodrigues@gmail.com</td>
-                </tr>
-            </tbody>
-        </table>
-   
+            <tr *ngFor="let pessoa of teste">
+                <!-- <td>
+                    {{pessoa.Codigo}}
+                </td> -->
+                <td>
+                    {{pessoa.nome}}
+                </td>
+                <td>
+                    {{pessoa.rua}}
+                </td>
+                <td>
+                    {{pessoa.email}}
+                </td>
+            </tr>
+            </table>
+        
     </div>
 </section>
 
@@ -48,7 +41,17 @@
         <h2 id="titulo-form">Fazer um novo cadastro</h2>
         <ul id="mensagens-erro"></ul>
 
-    <form  class = 'card p bg-light' id="form-adiciona">
+    <form  class = 'card-header table-bordered' id="form-adiciona">
+
+        <div class="form-group ">
+            <label for="exampleFormControlSelect">Tipo</label>
+            <div class="col-sm-3">
+            <select class="form-control" id="tipoSeletor">
+              <option value="pessoaFisica">Pessoa Física</option>
+              <option value="pessoaJuridica">Pessoa Jurídica</option>
+            </select>
+            </div>
+          </div>
         
             <div class="form-group row">
                 <label for="pessoaFisicaJuridica" class="col-sm-1 col-form-label 
@@ -69,7 +72,7 @@
         </div>
 
         <div class="form-group row" id="cliente">
-            <label for="nomeFantasia" id="nomeFantasia" class="col-sm-1 col-form-label col-form-label-sm" >NOME FANTASIA:</label>
+            <label for="nomeFantasia" id="nomeFantasia" class=" col-form-label col-form-label-sm" >NOME FANTASIA:</label>
            <div class="col-sm-5">
             <input type="text" id="colFormLabelSm" class="form-control form-control-sm"
              placeholder="Nome fantasia/razão social" name="nomeFantasia">
@@ -89,7 +92,7 @@
         </div>   
 
         <div class="form-group row" id="cliente">
-            <label for="rua" class="col-sm-1 col-form-label 
+            <label for="rua" class=" col-form-label
             col-form-label-sm" id="endereco" name="endereco"> ENDEREÇO:</label>
            <div class="col-sm-5">
             <input type="text" id="rua" class="form-control form-control-sm"
@@ -119,8 +122,8 @@
         <div class="form-group row" id="cliente">
             <label for="colFormLabelSm" class="col-sm-1 col-form-label 
             col-form-label-sm" >TELEFONE:</label>
-           <div class="col-sm-2">
-            <input type="number" id="telefone" class="form-control form-control-sm"
+           <div class="col-sm-3">
+            <input  id="telefone" class="form-control form-control-sm"
              placeholder="(99) 99999-9999" name="telefone" >
            </div>  
         </div>
