@@ -25,28 +25,21 @@ export class AppComponent implements OnInit{
    body.appendChild(script);
  }
   public consultar(){
-    var arrayPessoas = [{nome: "", rua: "", email: ""}];
-    var pessoa = localStorage.getItem("pessoa");
-    if (pessoa != null){
-      var pessoaJSON = JSON.parse(pessoa);
-      arrayPessoas.push(pessoaJSON);
+    var pessoas = localStorage.getItem("pessoas");
+    if (pessoas != null){
+      var pessoaJSON = JSON.parse(pessoas);
   }
-    console.log(arrayPessoas);
-    return arrayPessoas;
+    console.log(pessoaJSON);
+    return pessoaJSON;
   }
-  teste = this.consultar();
+  
+  public randint(low:number, max?:number) {
+    return Math.floor(Math.random() * 10) % (max ?? low) + (max ? low : 0);
+  }
+
+  tabela = this.consultar()
   title = 'softti';
   headers = ["Código", "Nome", "Endereço", "E-mail"]
-
-
-  rows = [
-  {
-    "Codigo" : "cpf/cnpj",
-    "Nome" : 'a',
-    "Endereco" : "rua",
-    "Email": "email"
-  }
-  ];
 
 
   documentClickEvent($event: MouseEvent) {

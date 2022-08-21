@@ -3,8 +3,8 @@ console.log(botaoAdicionar);
 botaoAdicionar.addEventListener("click", function(event) {
     event.preventDefault();
  
-    salvarConsulta();
-    // consultar();
+    var consulta = storage();
+    atualizarStorage(consulta);
 
 });
 
@@ -20,7 +20,7 @@ if(localStorage.email) {
     document.getElementById('email').value = localStorage.email;
 }
 
-var salvarConsulta = function() {
+var atualizarStorage = function(consulta) {
 
     var nome = document.getElementById('nome').value;
     var rua = document.getElementById('rua').value;
@@ -28,28 +28,25 @@ var salvarConsulta = function() {
 
     var pessoa = {nome: nome, rua: rua, email: email};
 
+    if(consulta != null){
+        consulta.push(pessoa);
+        var storageAtualizado = JSON.stringify(consulta);
+        localStorage.setItem("pessoas", storageAtualizado);
+    }else{
+        var primeiroStorage = [pessoa];
+        var storageAtualizado = JSON.stringify(primeiroStorage);
+        localStorage.setItem("pessoas", storageAtualizado);
+    }
 
-    var pessoaJson = JSON.stringify(pessoa);
-    localStorage.setItem("pessoa", pessoaJson);
-
-    // alert("Salvo com Sucesso");
+    
 };
 
-document.onchange = salvarConsulta;
-
-
-var consultar = function() {
-  var arrayPessoas = [];
-  
-  return arrayPessoas
-
-} 
-
-function selected(pessoaFisica){
-  var seletor = document.querySelector("#tipoSeletor");
-    if(value != "Selecionar"){
-      pessoaFisica[0].style.display = 'block';
-    }else{
-      pessoaJuridica[0].style.display = 'none';
-    }
-  }
+var storage = function(){
+    if (localStorage.getItem("pessoas") != null){ // se o local storage nao estiver vazio
+        var storage = localStorage.getItem("pessoas");
+        if (storage != null){
+          var storageJson = JSON.parse(storage);
+          return storageJson;
+        }
+    } else{return null;} // se estiver vazio vai retornar null
+}
