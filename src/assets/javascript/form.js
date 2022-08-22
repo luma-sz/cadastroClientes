@@ -25,8 +25,9 @@ var atualizarStorage = function(consulta) {
     var nome = document.getElementById('nome').value;
     var rua = document.getElementById('rua').value;
     var email = document.getElementById('email').value;
+    var codigo = Math.round(Math.random()*100);
 
-    var pessoa = {nome: nome, rua: rua, email: email};
+    var pessoa = {codigo: codigo, nome: nome, rua: rua, email: email};
 
     if(consulta != null){
         consulta.push(pessoa);
@@ -49,4 +50,16 @@ var storage = function(){
           return storageJson;
         }
     } else{return null;} // se estiver vazio vai retornar null
+}
+
+function selected (select) {
+    console.log(select);
+    if(select == "pessoaJuridica"){
+        var nomeFantasia = document.querySelector("#nomeFantasia");
+        nomeFantasia.classList.remove("invisivel");
+    }
+    if(select == "pessoaFisica"){
+        var nomeFantasia = document.querySelector("#nomeFantasia");
+        nomeFantasia.classList.add("invisivel");
+    }
 }

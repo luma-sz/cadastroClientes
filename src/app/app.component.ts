@@ -6,13 +6,13 @@ import {enableProdMode} from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  host: { ['(document:click)']: 'documentClickEvent($event)'}
+  // host: { ['(document:click)']: 'documentClickEvent($event)'}
+  host: { ['(document:click)']: 'consultar()'}
 })
 
 export class AppComponent implements OnInit{
   ngOnInit() {
     this.loadScript('../../assets/javascript/form.js');
-    this.consultar();
   }
 
  public loadScript(url: string) {
@@ -28,23 +28,13 @@ export class AppComponent implements OnInit{
     var pessoas = localStorage.getItem("pessoas");
     if (pessoas != null){
       var pessoaJSON = JSON.parse(pessoas);
-  }
-    console.log(pessoaJSON);
-    return pessoaJSON;
+      console.log(pessoaJSON);
+      return pessoaJSON;
+    }
   }
   
-  public randint(low:number, max?:number) {
-    return Math.floor(Math.random() * 10) % (max ?? low) + (max ? low : 0);
-  }
-
-  tabela = this.consultar()
   title = 'softti';
   headers = ["Código", "Nome", "Endereço", "E-mail"]
-
-
-  documentClickEvent($event: MouseEvent) {
-    console.log('Through Host - Click Event Details: ', $event)
-  }
 }
 
 

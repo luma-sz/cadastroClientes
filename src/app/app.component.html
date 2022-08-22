@@ -11,12 +11,12 @@
         <h2 id="titulo-form">Fazer um novo cadastro</h2>
         <ul id="mensagens-erro"></ul>
 
-    <form  class = 'card-header table-bordered' id="form-adiciona">
+    <form  class = 'need-validation card-header table-bordered' novalidate id="form-adiciona">
 
         <div class="form-group ">
             <label for="exampleFormControlSelect">Tipo</label>
-            <div class="col-sm-3">
-            <select class="form-control" id="tipoSeletor">
+            <div class="col-sm-3"> 
+            <select  onclick="selected(this.value)" class="form-control" id="tipoSeletor">
               <option value="pessoaFisica">Pessoa Física</option>
               <option value="pessoaJuridica">Pessoa Jurídica</option>
             </select>
@@ -28,7 +28,9 @@
                 col-form-label-sm" id="pessoaFisicaJuridica" > CPF/CNPJ:</label>
                <div class="col-sm-3">
                 <input name="pessoaFisicaJuridica" id="pessoaFisicaJuridica" type="text"  class="form-control form-control-sm"
-                 placeholder="Apenas os números.">
+                 placeholder="Apenas os números." required>
+                 <div class="invalid-feedback">Example invalid form file feedback</div>
+
                </div>  
             </div> 
 
@@ -41,8 +43,8 @@
          </div>  
         </div>
 
-        <div class="form-group row" id="cliente">
-            <label for="nomeFantasia" id="nomeFantasia" class=" col-form-label col-form-label-sm" >NOME FANTASIA:</label>
+        <div class="invisivel form-group row" id="nomeFantasia">
+            <label for="nomeFantasia" class=" col-form-label col-form-label-sm" >NOME FANTASIA:</label>
            <div class="col-sm-5">
             <input type="text" id="colFormLabelSm" class="form-control form-control-sm"
              placeholder="Nome fantasia/razão social" name="nomeFantasia">
@@ -103,7 +105,7 @@
             col-form-label-sm" >EMAIL:</label>
            <div class="col-sm-3">
             <input type="email" id="email" class="form-control form-control-sm"
-             placeholder="seuemail@dominio.com" name="email" >
+             placeholder="seuemail@dominio.com" name="email">
            </div>  
         </div>
 
@@ -125,7 +127,7 @@
                 </th>
             </tr>
 
-            <tr *ngFor="let pessoa of tabela">
+            <tr *ngFor="let pessoa of consultar()">
                 <td>
                     {{pessoa.codigo}}
                 </td>
