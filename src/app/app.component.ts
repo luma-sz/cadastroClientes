@@ -6,7 +6,6 @@ import {enableProdMode} from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  // host: { ['(document:click)']: 'documentClickEvent($event)'}
   host: { ['(document:click)']: 'consultar()'}
 })
 
@@ -28,11 +27,9 @@ export class AppComponent implements OnInit{
     var pessoas = localStorage.getItem("pessoas");
     if (pessoas != null){
       var pessoaJSON = JSON.parse(pessoas);
-      console.log(pessoaJSON);
       return pessoaJSON;
     }
   }
-  
   title = 'softti';
   headers = ["Código", "Nome", "Endereço", "E-mail"]
 }

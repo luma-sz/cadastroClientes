@@ -1,3 +1,24 @@
 .invisivel{
     display: none;
 }
+
+#container-secundaria {
+    padding: 15px;
+}
+
+#titulo-form {
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+}
+
+#botao-adiciona:active {
+    background-color: white;
+    color: rgb(89, 119, 219);
+    font-weight: bold;
+}
+
+#form-principal {
+ display: block;
+ padding-left: 10px;
+}
