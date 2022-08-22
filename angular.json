@@ -33,7 +33,8 @@
               
             ],
             "scripts": [
-              "src/assets/javascript/cep.js"
+              "src/assets/javascript/cep.js",
+              "src/assets/javascript/form.js"
             ] 
           },            
           "configurations": {
